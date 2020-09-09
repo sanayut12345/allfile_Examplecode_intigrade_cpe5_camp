@@ -1,0 +1,110 @@
+
+//controller Motor
+
+import time
+import RPi.GPIO as GPIO
+
+GPIO.setwarnings(False)
+in1 = 17 # Physical Pin 11
+in2 = 27 # Physical Pin 13
+in3 = 22 # Physical Pin 15
+in4 = 23 # Physical Pin 18
+GPIO.setmode(GPIO.BCM) # Use GPIO numbering instead of physical numbering
+GPIO.setup(in1, GPIO.OUT)
+GPIO.setup(in2, GPIO.OUT)
+GPIO.setup(in3, GPIO.OUT)
+GPIO.setup(in4, GPIO.OUT)
+fw = True
+ba = True
+tl = True
+tr = True
+rl = True
+rr = True
+def forward():
+    #ซ้าย
+    GPIO.output(in1, GPIO.HIGH)
+    GPIO.output(in2, GPIO.LOW)
+    #ขวา
+    GPIO.output(in3, GPIO.HIGH)
+    GPIO.output(in4, GPIO.LOW)
+    fw = False
+    ba = True
+    tl = True
+    tr = True
+    rl = True
+    rr = True
+def back():
+        #ซ้าย
+    GPIO.output(in1, GPIO.LOW)
+    GPIO.output(in2, GPIO.HIGH)
+    #ขวา
+    GPIO.output(in3, GPIO.LOW)
+    GPIO.output(in4, GPIO.HIGH)
+    fw = True
+    ba = False
+    tl = True
+    tr = True
+    rl = True
+    rr = True
+def turnLeft():
+        #ซ้าย
+    GPIO.output(in1, GPIO.LOW)
+    GPIO.output(in2, GPIO.LOW)
+    #ขวา
+    GPIO.output(in3, GPIO.HIGH)
+    GPIO.output(in4, GPIO.LOW)
+    fw = True
+    ba = True
+    tl = False
+    tr = True
+    rl = True
+    rr = True
+
+def turnRight():
+    #ซ้าย
+    GPIO.output(in1, GPIO.HIGH)
+    GPIO.output(in2, GPIO.LOW)
+    #ขวา
+    GPIO.output(in3, GPIO.LOW)
+    GPIO.output(in4, GPIO.LOW)
+    fw = True
+    ba = True
+    tl = True
+    tr = False
+    rl = True
+    rr = True
+    
+def rotateLeft():
+     #ซ้าย
+    GPIO.output(in1, GPIO.LOW)
+    GPIO.output(in2, GPIO.HIGH)
+    #ขวา
+    GPIO.output(in3, GPIO.HIGH)
+    GPIO.output(in4, GPIO.LOW)
+    fw = True
+    ba = True
+    tl = True
+    tr = True
+    rl = False
+    rr = True
+def rotateRight():
+    #ซ้าย
+    GPIO.output(in1, GPIO.HIGH)
+    GPIO.output(in2, GPIO.LOW)
+    #ขวา
+    GPIO.output(in3, GPIO.LOW)
+    GPIO.output(in4, GPIO.HIGH)
+    fw = True
+    ba = True
+    tl = True
+    tr = True
+    rl = True
+    rr = False
+def stopMotor():
+    #ซ้าย
+    GPIO.output(in1, GPIO.LOW)
+    GPIO.output(in2, GPIO.LOW)
+    #ขวา
+    GPIO.output(in3, GPIO.LOW)
+    GPIO.output(in4, GPIO.LOW)
+
